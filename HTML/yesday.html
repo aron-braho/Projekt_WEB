@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <title>Glass Onion - Movie Details</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #151515; /* Match the main page background */
+            color: white; /* Text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-block-size: 100vh; /* Ensure the body takes full height */
+        }
+
+        .navbar {
+            inline-size: 100%;
+            block-size: 50px;
+            background-color: black;
+            position: sticky;
+            inset-block-start: 0;
+        }
+        
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            block-size: 100%;
+            color: white;
+            font-family: "Sen", sans-serif;
+        }
+        
+        .logo-container {
+  flex: 1;
+}
+.logo {
+  font-size: 30px;
+  color: #a73520;
+}
+.menu-container {
+  flex: 0;
+  display: flex;
+  justify-content: flex-start;
+  margin-inline-start: 0; /* Ensures no extra margin on the left */
+  padding: 0; /* Removes any padding */
+}
+.menu-list {
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+}
+
+.menu-list-item {
+  margin-inline-end: 30px;
+}
+
+.menu-list-item.active {
+  font-weight: bold;
+}
+.menu-list-item a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color from parent */
+}
+.menu-list-item a:hover {
+  color: #a73520; /* Change color on hover */ }
+
+  .menu-list-item a:focus,
+.menu-list-item a:active {
+  outline: none; /* Removes blue outline */
+  color: white; /* Ensures the text color stays consistent */
+}
+.profile-container {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-text-container {
+  margin: 0 20px;
+}
+
+.profile-picture {
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.toggle {
+  inline-size: 40px;
+  block-size: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  inline-size: 18px;
+  block-size: 18px;
+  background-color: black;
+  position: absolute;
+  inset-inline-end: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}  
+        /* Container Styles */
+        .container {
+            padding: 20px;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: row; /* Align items in a row */
+            flex: 1; /* Allow the container to grow */
+        }
+
+        /* Trailer Section Styles */
+        .trailer {
+            flex: 1; /* Take up 1 part of the flex container */
+            margin-inline-end: 20px; /* Space between trailer and other content */
+        }
+
+        .trailer iframe {
+            inline-size: 100%; /* Make the trailer responsive */
+            block-size: 315px; /* Fixed height for the trailer */
+            border: none; /* Remove border */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+
+        .trailer-description {
+            font-size: 14px; /* Smaller font size */
+            color:            lightgray; /* Light gray color for the text */
+            margin-block-start: 10px; /* Space above the text */
+        }
+
+        .movie-title {
+            font-size: 24px; /* Larger font size for the movie title */
+            margin-block-start: 15px; /* Space above the title */
+            color: #a73520; /* Green color for the title */
+            font-weight: bold; /* Bold font weight */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle text shadow */
+        }
+
+        .movie-plot {
+            font-size: 16px; /* Font size for the plot description */
+            color: lightgray; /* Light gray color for the text */
+            margin-block-start: 5px; /* Space above the plot description */
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 10px; /* Padding around the text */
+            border-radius: 5px; /* Rounded corners */
+            border-inline-start: 4px solid #a73520; /* Green left border */
+        }
+
+        /* Content Section Styles */
+        .content {
+            flex: 1; /* Take up 1 part of the flex container */
+        }
+
+        /* Parents Guide, Reviews, and Comments Styles */
+        .parents-guide, .reviews, .comments {
+            background-color: #222; /* Dark background for sections */
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-block-end: 20px; /* Space between sections */
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333; /* Dark background for the header */
+            border-radius: 5px;
+            margin-block-end: 10px;
+        }
+
+        .collapsible h3 {
+            margin: 0;
+            flex: 1; /* Take up available space */
+        }
+
+        .collapsible i {
+            transition: transform 0.3s; /* Smooth transition for rotation */
+        }
+
+        .content-section {
+            display: none; /* Hidden by default */
+            padding: 10px;
+            background-color: #444; /* Slightly lighter background */
+            border-radius: 5px;
+        }
+
+        /* Comments Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            resize: none; /* Disable resizing */
+            block-size: 100px; /* Fixed height for textarea */
+            margin-block-end: 10px; /* Space below textarea */
+            padding: 10px; /* Padding inside textarea */
+            background-color: #333; /* Dark background for textarea */
+            color: white; /* Text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        button {
+            background-color: #a73520; /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3ca600; /* Darker shade on hover */
+        }
+
+        /* Actor Photos Section */
+        .actors {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-around; /* Space out the actor images */
+            margin-block-start: 20px; /* Space above the actor section */
+        }
+
+        .actor {
+            inline-size: 80px; /* Width of the actor image */
+            block-size: 80px; /* Height of the actor image */
+            border-radius: 50%; /* Make the image circular */
+            overflow: hidden; /* Hide overflow */
+            border: 2px solid #a73520; /* Green border */
+            text-align: center; /* Center the text */
+        }
+
+        .actor img {
+            inline-size: 100%; /* Make the image fill the container */
+            block-size: auto; /* Maintain aspect ratio */
+        }
+
+        .actor-name {
+            margin-block-start: 5px; /* Space between image and name */
+            font-size: 14px; /* Font size for the actor name */
+            color: white; /* Text color */
+        }
+
+        /* Responsive Styles */
+        @media (max-inline-size: 768px) {
+            .trailer iframe {
+                block-size:200px; /* Adjust height for smaller screens */
+            }
+
+            .navbar {
+                padding: 10px 20px; /* Adjust padding for smaller screens */
+            }
+
+            .menu-list {
+                flex-direction: column; /* Stack menu items vertically */
+                margin-block-start: 10px; /* Space above the menu */
+            }
+
+            .menu-list-item {
+                margin: 5px 0; /* Space between menu items */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container"> 
+           <div class="logo-container"><h1 class="logo">Briefly</h1></div>
+            <div class="menu-container"></div> <ul class="menu-list"></ul>
+             <li class="menu-list-item active"><a href="index.html">Home</a></li>
+              <li class="menu-list-item"><a href="movies.html">Movies</a></li> 
+              <li class="menu-list-item"><a href="series.html">Series</a></li> 
+              <li class="menu-list-item"><a href="popular.html">Popular</a></li>
+               <li class="menu-list-item"><a href="trendsi.html">Trends</a></li> </ul> 
+               <div class="profile-container"> <img class="profile-picture" src="../img/ph.jpg" alt="">
+                    <div class="profile-text-container"> <span class="profile-text">Profile</span> 
+                       <i class="fa-solid fa-angle-down"></i> </div> <div class="toggle"> 
+                           <i class="fa-solid fa-moon toggle-icon"></i>
+                            <i class="fa-solid fa-sun toggle-icon"></i> 
+                            <div class="toggle-ball"></div> 
+                           </div>
+                        </div>
+                        </div>
+                        </div>
+    <div class="container">
+        <div class="trailer">
+            <h2>Trailer</h2>
+            <iframe src="https://www.youtube.com/embed/YiTQBGGiAa8" allowfullscreen></iframe>
+            <p class="trailer-description">Watch the official trailer for Glass Onion.</p>
+            <h3 class="movie-title">Glass Onion</h3> <!-- Title of the movie -->
+            <p class="movie-plot">Five long-time friends are invited to the Greek island home of billionaire Miles Bron. All five know Bron from way back and owe their current wealth, fame, and careers to him. The main event is a murder-weekend game with Bron to be the victim. In reality, they all have reasons to kill him. Also invited is Benoit Blanc, the world's greatest detective.</p> <!-- Plot description -->
+        </div>
+        <div class="content">
+            <div class="parents-guide">
+                <div class="collapsible" onclick="toggleContent()">
+                    <h3>Parents' Guide <i class="fa-solid fa-chevron-down" id="arrow"></i></h3>
+                </div>
+                <div class="content-section" id="parentsContent">
+                    <h4>Violence & Gore</h4>
+                    <p>There are several intense scenes involving action and conflict. Characters engage in fights, and some blood is shown, but there are no graphic injuries.</p>
+                    
+                    <h4>Profanity</h4>
+                    <p>The film contains mild language, including words like "damn" and "*****," used infrequently throughout the dialogue.</p>
+                    
+                    <h4>Sex & Nudity</h4>
+                    <p>There is a brief scene of kissing between two characters. No nudity is present, and the context is romantic.</p>
+                    
+                    <h4>Alcohol, Drugs & Smoking</h4>
+                    <p>Characters are depicted drinking alcohol in a celebratory context, but there is no excessive drinking or drug use shown.</p>
+                    
+                    <h4>Frightening & Intense Scenes</h4>
+                    <p>Some scenes may be frightening for younger viewers, particularly those involving dark settings and menacing creatures.</p>
+                    
+                    <h4>Mature Themes</h4>
+                    <p>The film explores themes of loss, friendship, and bravery, which may be complex for younger audiences to fully understand.</p>
+                    
+                    <h4>Positive Messages</h4>
+                    <p>The film promotes teamwork, courage, and the importance of standing up for what is right, making it a good choice for family viewing.</p>
+                    
+                    <h4>Role Models</h4>
+                    <p>The main character serves as a strong role model, demonstrating resilience and compassion throughout the story.</p>
+                    
+                    <h4>Recommendations</h4>
+                    <p>Recommended for ages 12 and up, with parental guidance suggested for younger viewers due to some intense scenes and themes.</p>
+                </div>
+            </div>
+            <div class="reviews">
+                <h2>Reviews</h2>
+                <p>Content about reviews goes here.</p>
+            </div>
+            <div class="comments">
+                <h2>Comments</h2>
+                <form>
+                    <textarea placeholder="Leave a comment..."></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="actors">
+        <div class="actor">
+            <img src="../img/actor1.jpg" alt="Actor 1">
+            <p class="actor-name">Actor 1</p> <!-- Name under the photo -->
+        </div>
+        <div class="actor">
+            <img src="../img/actor2.jpg" alt="Actor 2">
+            <p class="actor-name">Actor 2</p> <!-- Name under the photo -->
+        </div>
+        <div class="actor">
+            <img src="../img/actor3.jpg" alt="Actor 3">
+            <p class="actor-name">Actor 3</p> <!-- Name under the photo -->
+        </div>
+        <div class="actor">
+            <img src="../img/actor4.jpg" alt="Actor 4">
+            <p class="actor-name">Actor 4</p> <!-- Name under the photo -->
+        </div>
+    </div>
+    <script>
+        function toggleContent() {
+            const content = document.getElementById("parentsContent");
+            const arrow = document.getElementById("arrow");
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                arrow.style.transform = "rotate(0deg)"; // Rotate arrow back
+            } else {
+                content.style.display = "block";
+                arrow.style.transform = "rotate(180deg)"; // Rotate arrow down
+            }
+        }
+    </script>
+</body>
+</html>

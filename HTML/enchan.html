@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Onion - Movie Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/Navigation.css">
+    <link rel="stylesheet" href="../CSS/Glass_Onion.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container"> 
+            <div class="logo-container">
+                <h1 class="logo">Briefly</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item active"><a href="index.html">Home</a></li>
+                    <li class="menu-list-item"><a href="movies.html">Movies</a></li> 
+                    <li class="menu-list-item"><a href="series.html">Series</a></li> 
+                    <li class="menu-list-item"><a href="popular.html">Popular</a></li>
+                    <li class="menu-list-item"><a href="trendsi.html">Trends</a></li> 
+                </ul> 
+            </div>
+            <div class="profile-container"> 
+                <img class="profile-picture" src="../img/ph.jpg" alt="Profile">
+                <div class="profile-text-container"> 
+                    <span class="profile-text">Profile</span> 
+                    <i class="fa-solid fa-angle-down"></i> 
+                </div> 
+                <div class="toggle"> 
+                    <i class="fa-solid fa-moon toggle-icon"></i>
+                    <i class="fa-solid fa-sun toggle-icon"></i> 
+                    <div class="toggle-ball"></div> 
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="trailer">
+            <h2>Trailer</h2>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=gj5ibYSz8C0" target="_blank" class="video-anchor">
+                    <img src="https://img.youtube.com/vi/gj5ibYSz8C0/maxresdefault.jpg" alt="Watch Glass Onion Trailer">
+                    <div class="play-button-overlay">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </a>
+            </div>
+            <p class="trailer-description">Watch the official trailer for Glass Onion.</p>
+            
+            <h3 class="movie-title">Glass Onion: A Knives Out Mystery</h3>
+            <p class="movie-plot">
+                Five long-time friends are invited to the Greek island home of billionaire Miles Bron. 
+                All five know Bron from way back and owe their current wealth, fame, and careers to him. 
+                The main event is a murder-weekend game with Bron to be the victim. 
+                In reality, they all have reasons to kill him. Also invited is Benoit Blanc, the world's greatest detective.
+            </p>
+        </section>
+
+        <section class="content">
+            <div class="parents-guide">
+                <div class="collapsible" onclick="toggleContent()">
+                    <h3>Parents' Guide <i class="fa-solid fa-chevron-down" id="arrow"></i></h3>
+                </div>
+                <div class="content-section" id="parentsContent">
+                    <p><strong>Violence:</strong> Intense action and stylized fights; some blood, no graphic injuries.</p>
+                    <p><strong>Language:</strong> Occasional mild profanity (e.g., "damn").</p>
+                    <p><strong>Sex:</strong> Brief romantic kissing; no nudity.</p>
+                    <p><strong>Substances:</strong> Social drinking; no drug use.</p>
+                    <p><strong>Intensity:</strong> Menacing atmosphere and dark settings in some scenes.</p>
+                    <p><strong>Themes:</strong> Friendship, betrayal, and bravery.</p>
+                    <p><strong>Messages:</strong> Focuses on teamwork and standing up for the truth.</p>
+                    <p><strong>Verdict:</strong> Recommended for ages 12+ due to mystery complexity and intensity.</p>
+                </div>
+            </div>
+
+            <div class="reviews">
+                <h3>Reviews</h3>
+                <p>"A masterclass in modern mystery. Daniel Craig is better than ever." - 5 Stars</p>
+            </div>
+
+            <div class="comments">
+                <h3>Comments</h3>
+                <form>
+                    <textarea placeholder="Leave a comment..."></textarea>
+                    <button type="button">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <section class="cast-section">
+        <div class="actor">
+            <img src="../img/actor1.jpg" alt="Daniel Craig">
+            <p>Daniel Craig</p>
+        </div>
+        <div class="actor">
+            <img src="../img/actor2.jpg" alt="Edward Norton">
+            <p>Edward Norton</p>
+        </div>
+        <div class="actor">
+            <img src="../img/actor3.jpg" alt="Janelle Monáe">
+            <p>Janelle Monáe</p>
+        </div>
+        <div class="actor">
+            <img src="../img/actor4.jpg" alt="Kate Hudson">
+            <p>Kate Hudson</p>
+        </div>
+    </section>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById("parentsContent");
+            const arrow = document.getElementById("arrow");
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                content.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+            }
+        }
+    </script>
+</body>
+</html>
