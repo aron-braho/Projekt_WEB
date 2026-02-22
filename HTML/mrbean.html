@@ -3,393 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Navigation.css">
+    <title>Mr. Bean - Movie Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    
-    <title>Glass Onion - Movie Details</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: "Poppins", sans-serif;
-            background-color: #151515; /* Match the main page background */
-            color: white; /* Text color */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-block-size: 100vh; /* Ensure the body takes full height */
-        }
-
-        .navbar {
-            inline-size: 100%;
-            block-size: 50px;
-            background-color: black;
-            position: sticky;
-            inset-block-start: 0;
-        }
-        
-        .navbar-container {
-            display: flex;
-            align-items: center;
-            padding: 0 50px;
-            block-size: 100%;
-            color: white;
-            font-family: "Sen", sans-serif;
-        }
-        
-        .logo-container {
-  flex: 1;
-}
-.logo {
-  font-size: 30px;
-  color: #a73520;
-}
-.menu-container {
-  flex: 0;
-  display: flex;
-  justify-content: flex-start;
-  margin-inline-start: 0; /* Ensures no extra margin on the left */
-  padding: 0; /* Removes any padding */
-}
-.menu-list {
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
-}
-
-.menu-list-item {
-  margin-inline-end: 30px;
-}
-
-.menu-list-item.active {
-  font-weight: bold;
-}
-.menu-list-item a {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Inherits the color from parent */
-}
-.menu-list-item a:hover {
-  color: #a73520; /* Change color on hover */ }
-
-  .menu-list-item a:focus,
-.menu-list-item a:active {
-  outline: none; /* Removes blue outline */
-  color: white; /* Ensures the text color stays consistent */
-}
-.profile-container {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.profile-text-container {
-  margin: 0 20px;
-}
-
-.profile-picture {
-  inline-size: 32px;
-  block-size: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.toggle {
-  inline-size: 40px;
-  block-size: 20px;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-}
-
-.toggle-icon {
-  color: goldenrod;
-}
-
-.toggle-ball {
-  inline-size: 18px;
-  block-size: 18px;
-  background-color: black;
-  position: absolute;
-  inset-inline-end: 1px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 1s ease all;
-}  
-        /* Container Styles */
-        .container {
-            padding: 20px;
-            display: flex; /* Use flexbox for layout */
-            flex-direction: row; /* Align items in a row */
-            flex: 1; /* Allow the container to grow */
-        }
-
-        /* Trailer Section Styles */
-        .trailer {
-            flex: 1; /* Take up 1 part of the flex container */
-            margin-inline-end: 20px; /* Space between trailer and other content */
-        }
-
-        .trailer iframe {
-            inline-size: 100%; /* Make the trailer responsive */
-            block-size: 315px; /* Fixed height for the trailer */
-            border: none; /* Remove border */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-        }
-
-        .trailer-description {
-            font-size: 14px; /* Smaller font size */
-            color:            lightgray; /* Light gray color for the text */
-            margin-block-start: 10px; /* Space above the text */
-        }
-
-        .movie-title {
-            font-size: 24px; /* Larger font size for the movie title */
-            margin-block-start: 15px; /* Space above the title */
-            color: #a73520; /* Green color for the title */
-            font-weight: bold; /* Bold font weight */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle text shadow */
-        }
-
-        .movie-plot {
-            font-size: 16px; /* Font size for the plot description */
-            color: lightgray; /* Light gray color for the text */
-            margin-block-start: 5px; /* Space above the plot description */
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-            padding: 10px; /* Padding around the text */
-            border-radius: 5px; /* Rounded corners */
-            border-inline-start: 4px solid #a73520; /* Green left border */
-        }
-
-        /* Content Section Styles */
-        .content {
-            flex: 1; /* Take up 1 part of the flex container */
-        }
-
-        /* Parents Guide, Reviews, and Comments Styles */
-        .parents-guide, .reviews, .comments {
-            background-color: #222; /* Dark background for sections */
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-block-end: 20px; /* Space between sections */
-        }
-
-        /* Collapsible Section Styles */
-        .collapsible {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 10px;
-            background-color: #333; /* Dark background for the header */
-            border-radius: 5px;
-            margin-block-end: 10px;
-        }
-
-        .collapsible h3 {
-            margin: 0;
-            flex: 1; /* Take up available space */
-        }
-
-        .collapsible i {
-            transition: transform 0.3s; /* Smooth transition for rotation */
-        }
-
-        .content-section {
-            display: none; /* Hidden by default */
-            padding: 10px;
-            background-color: #444; /* Slightly lighter background */
-            border-radius: 5px;
-        }
-
-        /* Comments Form Styles */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        textarea {
-            resize: none; /* Disable resizing */
-            block-size: 100px; /* Fixed height for textarea */
-            margin-block-end: 10px; /* Space below textarea */
-            padding: 10px; /* Padding inside textarea */
-            background-color: #333; /* Dark background for textarea */
-            color: white; /* Text color */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Rounded corners */
-        }
-
-        button {
-            background-color: #a73520; /* Button color */
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #3ca600; /* Darker shade on hover */
-        }
-
-        /* Actor Photos Section */
-        .actors {
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-around; /* Space out the actor images */
-            margin-block-start: 20px; /* Space above the actor section */
-        }
-
-        .actor {
-            inline-size: 80px; /* Width of the actor image */
-            block-size: 80px; /* Height of the actor image */
-            border-radius: 50%; /* Make the image circular */
-            overflow: hidden; /* Hide overflow */
-            border: 2px solid #a73520; /* Green border */
-            text-align: center; /* Center the text */
-        }
-
-        .actor img {
-            inline-size: 100%; /* Make the image fill the container */
-            block-size: auto; /* Maintain aspect ratio */
-        }
-
-        .actor-name {
-            margin-block-start: 5px; /* Space between image and name */
-            font-size: 14px; /* Font size for the actor name */
-            color: white; /* Text color */
-        }
-
-        /* Responsive Styles */
-        @media (max-inline-size: 768px) {
-            .trailer iframe {
-                block-size:200px; /* Adjust height for smaller screens */
-            }
-
-            .navbar {
-                padding: 10px 20px; /* Adjust padding for smaller screens */
-            }
-
-            .menu-list {
-                flex-direction: column; /* Stack menu items vertically */
-                margin-block-start: 10px; /* Space above the menu */
-            }
-
-            .menu-list-item {
-                margin: 5px 0; /* Space between menu items */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../CSS/Navigation.css">
+    <link rel="stylesheet" href="../CSS/Glass_Onion.css">
 </head>
 <body>
-    <div class="navbar">
+
+    <nav class="navbar">
         <div class="navbar-container"> 
-           <div class="logo-container"><h1 class="logo">Briefly</h1></div>
-            <div class="menu-container"></div> <ul class="menu-list"></ul>
-             <li class="menu-list-item active"><a href="index.html">Home</a></li>
-              <li class="menu-list-item"><a href="movies.html">Movies</a></li> 
-              <li class="menu-list-item"><a href="series.html">Series</a></li> 
-              <li class="menu-list-item"><a href="popular.html">Popular</a></li>
-               <li class="menu-list-item"><a href="trendsi.html">Trends</a></li> </ul> 
-               <div class="profile-container"> <img class="profile-picture" src="../img/ph.jpg" alt="">
-                    <div class="profile-text-container"> <span class="profile-text">Profile</span> 
-                       <i class="fa-solid fa-angle-down"></i> </div> <div class="toggle"> 
-                           <i class="fa-solid fa-moon toggle-icon"></i>
-                            <i class="fa-solid fa-sun toggle-icon"></i> 
-                            <div class="toggle-ball"></div> 
-                           </div>
-                        </div>
-                        </div>
-                        </div>
-    <div class="container">
-        <div class="trailer">
-            <h2>Trailer</h2>
-            <iframe src="https://www.youtube.com/embed/YiTQBGGiAa8" allowfullscreen></iframe>
-            <p class="trailer-description">Watch the official trailer for Glass Onion.</p>
-            <h3 class="movie-title">Glass Onion</h3> <!-- Title of the movie -->
-            <p class="movie-plot">Five long-time friends are invited to the Greek island home of billionaire Miles Bron. All five know Bron from way back and owe their current wealth, fame, and careers to him. The main event is a murder-weekend game with Bron to be the victim. In reality, they all have reasons to kill him. Also invited is Benoit Blanc, the world's greatest detective.</p> <!-- Plot description -->
+            <div class="logo-container">
+                <h1 class="logo">Briefly</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item active"><a href="index.html">Home</a></li>
+                    <li class="menu-list-item"><a href="movies.html">Movies</a></li> 
+                    <li class="menu-list-item"><a href="series.html">Series</a></li> 
+                    <li class="menu-list-item"><a href="popular.html">Popular</a></li>
+                    <li class="menu-list-item"><a href="trendsi.html">Trends</a></li> 
+                </ul> 
+            </div>
+            <div class="profile-container"> 
+                <img class="profile-picture" src="../img/ph.jpg" alt="Profile">
+                <div class="profile-text-container"> 
+                    <span class="profile-text">Profile</span> 
+                    <i class="fa-solid fa-angle-down"></i> 
+                </div> 
+                <div class="toggle"> 
+                    <i class="fa-solid fa-moon toggle-icon"></i>
+                    <i class="fa-solid fa-sun toggle-icon"></i> 
+                    <div class="toggle-ball"></div> 
+                </div>
+            </div>
         </div>
-        <div class="content">
+    </nav>
+
+    <main class="container">
+        <section class="trailer">
+            <h2>Trailer</h2>
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=Le2ocIXtrSs" target="_blank" class="video-anchor">
+                    <img src="https://img.youtube.com/vi/Le2ocIXtrSs/maxresdefault.jpg" alt="Watch Mr. Bean Trailer">
+                    <div class="play-button-overlay">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </a>
+            </div>
+            <p class="trailer-description">Watch the official trailer for Bean: The Ultimate Disaster Movie.</p>
+            
+            <h3 class="movie-title">Bean: The Ultimate Disaster Movie</h3>
+            <p class="movie-plot">
+                Mr. Bean, a bumbling security guard at the Royal National Gallery in London, is sent to Los Angeles to represent the gallery at the unveiling of the priceless painting "Whistler's Mother." 
+                As he stays with a museum curator and his family, Bean's unique brand of chaos leads to the destruction of the painting and nearly ruins everyone's lives, only to be saved by his own peculiar logic.
+            </p>
+        </section>
+
+        <section class="content">
             <div class="parents-guide">
                 <div class="collapsible" onclick="toggleContent()">
                     <h3>Parents' Guide <i class="fa-solid fa-chevron-down" id="arrow"></i></h3>
                 </div>
                 <div class="content-section" id="parentsContent">
-                    <h4>Violence & Gore</h4>
-                    <p>There are several intense scenes involving action and conflict. Characters engage in fights, and some blood is shown, but there are no graphic injuries.</p>
-                    
-                    <h4>Profanity</h4>
-                    <p>The film contains mild language, including words like "damn" and "*****," used infrequently throughout the dialogue.</p>
-                    
-                    <h4>Sex & Nudity</h4>
-                    <p>There is a brief scene of kissing between two characters. No nudity is present, and the context is romantic.</p>
-                    
-                    <h4>Alcohol, Drugs & Smoking</h4>
-                    <p>Characters are depicted drinking alcohol in a celebratory context, but there is no excessive drinking or drug use shown.</p>
-                    
-                    <h4>Frightening & Intense Scenes</h4>
-                    <p>Some scenes may be frightening for younger viewers, particularly those involving dark settings and menacing creatures.</p>
-                    
-                    <h4>Mature Themes</h4>
-                    <p>The film explores themes of loss, friendship, and bravery, which may be complex for younger audiences to fully understand.</p>
-                    
-                    <h4>Positive Messages</h4>
-                    <p>The film promotes teamwork, courage, and the importance of standing up for what is right, making it a good choice for family viewing.</p>
-                    
-                    <h4>Role Models</h4>
-                    <p>The main character serves as a strong role model, demonstrating resilience and compassion throughout the story.</p>
-                    
-                    <h4>Recommendations</h4>
-                    <p>Recommended for ages 12 and up, with parental guidance suggested for younger viewers due to some intense scenes and themes.</p>
+                    <p><strong>Violence:</strong> Slapstick comedy violence; some mild peril and accidents.</p>
+                    <p><strong>Language:</strong> Very little dialogue; some mild insults.</p>
+                    <p><strong>Sex:</strong> Brief comedic situations; no nudity.</p>
+                    <p><strong>Substances:</strong> Social situations with mild alcohol use.</p>
+                    <p><strong>Intensity:</strong> High-energy physical comedy and awkward social situations.</p>
+                    <p><strong>Themes:</strong> Chaos, friendship, and unintended consequences.</p>
+                    <p><strong>Messages:</strong> Even the most bumbling individual can find a way to fix their mistakes.</p>
+                    <p><strong>Verdict:</strong> Recommended for all ages, though rated PG-13 for some "risque humor."</p>
                 </div>
             </div>
+
             <div class="reviews">
-                <h2>Reviews</h2>
-                <p>Content about reviews goes here.</p>
+                <h3>Reviews</h3>
+                <p>"A hilarious expansion of the character. Rowan Atkinson is a comedic genius." - 5 Stars</p>
             </div>
+
             <div class="comments">
-                <h2>Comments</h2>
+                <h3>Comments</h3>
                 <form>
                     <textarea placeholder="Leave a comment..."></textarea>
-                    <button type="submit">Submit</button>
+                    <button type="button">Submit</button>
                 </form>
             </div>
-        </div>
-    </div>
-    <div class="actors">
+        </section>
+    </main>
+
+    <section class="cast-section">
         <div class="actor">
-            <img src="../img/actor1.jpg" alt="Actor 1">
-            <p class="actor-name">Actor 1</p> <!-- Name under the photo -->
-        </div>
-        <div class="actor">
-            <img src="../img/actor2.jpg" alt="Actor 2">
-            <p class="actor-name">Actor 2</p> <!-- Name under the photo -->
+            <img src="data:image/webp;base64,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" alt="Rowan Atkinson">
+            <p>Rowan Atkinson</p>
         </div>
         <div class="actor">
-            <img src="../img/actor3.jpg" alt="Actor 3">
-            <p class="actor-name">Actor 3</p> <!-- Name under the photo -->
+            <img src="https://th.bing.com/th/id/OIP.VxpEDpOiJW66SZ2vB3xYkAHaJ4?w=144&h=192&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Peter MacNicol">
+            <p>Peter MacNicol</p>
         </div>
         <div class="actor">
-            <img src="../img/actor4.jpg" alt="Actor 4">
-            <p class="actor-name">Actor 4</p> <!-- Name under the photo -->
+            <img src="https://th.bing.com/th/id/OIP.a1Bv3hIHCRcv5zSoDsneZgHaLH?w=132&h=198&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Pamela Reed">
+            <p>Pamela Reed</p>
         </div>
-    </div>
+        <div class="actor">
+            <img src="https://th.bing.com/th/id/OIP.5YLNBo4BMIT3Vn1_q6Wd5gHaLb?w=115&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="Burt Reynolds">
+            <p>Burt Reynolds</p>
+        </div>
+    </section>
+
     <script>
         function toggleContent() {
             const content = document.getElementById("parentsContent");
             const arrow = document.getElementById("arrow");
             if (content.style.display === "block") {
                 content.style.display = "none";
-                arrow.style.transform = "rotate(0deg)"; // Rotate arrow back
+                arrow.style.transform = "rotate(0deg)";
             } else {
                 content.style.display = "block";
-                arrow.style.transform = "rotate(180deg)"; // Rotate arrow down
+                arrow.style.transform = "rotate(180deg)";
             }
         }
     </script>
