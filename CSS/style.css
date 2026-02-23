@@ -1,4 +1,25 @@
 /* --- GLOBAL RESET --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 35px; /* Adjust this value based on your logo's shape */
+    width: auto;  /* Maintains aspect ratio */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Subtle pop effect when hovering */
+}
+
+/* Ensure the link doesn't add weird spacing */
+.emri-container a {
+    display: flex;
+    text-decoration: none;
+}
 * {
     margin: 0;
     padding: 0;
@@ -252,6 +273,82 @@ body {
     color: lightgray;
     opacity: 0.5;
     cursor: pointer;
+}
+
+/* Contact Section Styles */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #151515;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-desc {
+    color: lightgray;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    padding: 15px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: #a73520; /* Briefly Red */
+}
+
+.contact-button {
+    background-color: #a73520;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.contact-button:hover {
+    background-color: #ce4228;
+    transform: translateY(-2px);
+}
+
+.main-footer {
+    text-align: center;
+    padding: 30px;
+    color: gray;
+    font-size: 14px;
+    border-top: 1px solid #222;
+}
+
+/* Responsive adjustment for the inputs */
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
 }
 
 /* --- ACTIVE STATE (LIGHT MODE) --- */
