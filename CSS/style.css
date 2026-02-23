@@ -350,11 +350,3 @@ body {
         flex-direction: column;
     }
 }
-
-/* --- ACTIVE STATE (LIGHT MODE) --- */
-.container.active { background-color: white; color: black; }
-.navbar-container.active { background-color: white; color: black; }
-.navbar-container.active .menu-list-item a { color: black; }
-.movie-list-title.active { color: black; }
-.toggle.active { background-color: black; }
-.toggle-ball.active { background-color: white; transform: translateX(-20px); }
