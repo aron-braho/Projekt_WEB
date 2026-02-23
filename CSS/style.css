@@ -4,21 +4,21 @@
     align-items: center;
 }
 
-.logo-img {
-    height: 35px; /* Adjust this value based on your logo's shape */
-    width: auto;  /* Maintains aspect ratio */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-    transform: scale(1.05); /* Subtle pop effect when hovering */
-}
 
 /* Ensure the link doesn't add weird spacing */
-.emri-container a {
+.logoja {
     display: flex;
-    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%; /* Spans full width to allow centering */
+}
+
+/* The actual image inside the container */
+.logoja img {
+    width: 150px;    /* Standard logo width */
+    height: auto;    /* Maintains aspect ratio */
+    object-fit: contain;
 }
 * {
     margin: 0;
