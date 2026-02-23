@@ -1,311 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trends - Briefly</title>
     <link rel="stylesheet" href="../CSS/Navigation.css">
-    <title>Trending Videos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/Movies.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-   /* General Styles */
-   body {
-            font-family: "Poppins", sans-serif;
-            background-color: #151515; /* Match the main page background */
-            color: white; /* Text color */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-block-size: 100vh; /* Ensure the body takes full height */
-        }
-
-        .navbar {
-            inline-size: 100%;
-            block-size: 50px;
-            background-color: black;
-            position: sticky;
-            inset-block-start: 0;
-        }
-        
-        .navbar-container {
-            display: flex;
-            align-items: center;
-            padding: 0 50px;
-            block-size: 100%;
-            color: white;
-            font-family: "Sen", sans-serif;
-        }
-        
-        .logo-container {
-  flex: 1;
-}
-.logo {
-  font-size: 30px;
-  color: #a73520;
-}
-.menu-container {
-  flex: 0;
-  display: flex;
-  justify-content: flex-start;
-  margin-inline-start: 0; /* Ensures no extra margin on the left */
-  padding: 0; /* Removes any padding */
-}
-.menu-list {
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
-}
-
-.menu-list-item {
-  margin-inline-end: 30px;
-}
-
-.menu-list-item.active {
-  font-weight: bold;
-}
-.menu-list-item a {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Inherits the color from parent */
-}
-.menu-list-item a:hover {
-  color: #a73520; /* Change color on hover */ }
-
-  .menu-list-item a:focus,
-.menu-list-item a:active {
-  outline: none; /* Removes blue outline */
-  color: white; /* Ensures the text color stays consistent */
-}
-.profile-container {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.profile-text-container {
-  margin: 0 20px;
-}
-
-.profile-picture {
-  inline-size: 32px;
-  block-size: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.toggle {
-  inline-size: 40px;
-  block-size: 20px;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-}
-
-.toggle-icon {
-  color: goldenrod;
-}
-
-.toggle-ball {
-  inline-size: 18px;
-  block-size: 18px;
-  background-color: black;
-  position: absolute;
-  inset-inline-end: 1px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 1s ease all;
-}  
-
-        .video-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            text-align: center;
-        }
-
+        /* Unified Trends Styles - Now in Red */
         .video-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-            justify-content: center;
-            padding: 10px;
+            margin-bottom: 40px;
         }
 
         .video-item {
-            flex: 0 0 auto;
-            width: 320px;
-            transition: transform 0.3s ease-in-out;
             background: #222;
+            padding: 15px;
             border-radius: 10px;
-            overflow: hidden;
+            transition: transform 0.3s ease;
         }
+
         .video-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(167, 53, 32, 0.3);
         }
 
         iframe {
             width: 100%;
-            height: 180px;
-            border-radius: 10px;
+            height: 200px;
+            border-radius: 8px;
+            border: none;
         }
 
         .video-title {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            color: #a73520;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
         }
 
         .comment-section {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background: #333;
+            background: #222;
+            padding: 30px;
             border-radius: 10px;
+            max-width: 800px;
+            margin: 40px auto;
         }
 
-        .comment-section input,
-        .comment-section textarea {
+        .comment-form input, .comment-form textarea {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
             border-radius: 5px;
-            border: none;
-            background: #444;
+            border: 1px solid #444;
+            background: #151515;
             color: white;
         }
 
-        .comment-section button {
-            background: #a73520;
+        .comment-form input:focus, .comment-form textarea:focus {
+            outline: none;
+            border-color: #a73520;
+        }
+
+        .submit-btn {
+            background-color: #a73520;
             color: white;
             border: none;
-            padding: 10px;
-            width: 100%;
+            padding: 12px 30px;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            width: 100%;
             transition: 0.3s;
         }
 
-        .comment-section button:hover {
-            background: #3a9b00;
+        .submit-btn:hover {
+            background-color: #ce4228; /* Slightly lighter red for hover */
         }
 
+        .section-title {
+            font-size: 28px;
+            margin: 30px 0;
+            color: #a73520; /* The Briefly Red */
+            border-bottom: 2px solid #a73520;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px rgba(167, 53, 32, 0.3);
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
-            background: #000;
-            margin-top: 40px;
-        }
-
-        /* Custom Styles for Section Titles */
-        .section-title {
-            text-align: center;
-            color: green;
-            text-shadow: 0 0 5px green, 0 0 10px green, 0 0 15px green;
-            margin: 20px 0;
+            padding: 40px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
+
 <body>
-  <div class="navbar">
-    <div class="navbar-container"> 
-       <div class="logo-container"><h1 class="logo">Briefly</h1></div>
-        <div class="menu-container"></div> <ul class="menu-list"></ul>
-         <li class="menu-list-item active"><a href="index.html">Home</a></li>
-          <li class="menu-list-item"><a href="movies.html">Movies</a></li> 
-          <li class="menu-list-item"><a href="series.html">Series</a></li> 
-          <li class="menu-list-item"><a href="popular.html">Popular</a></li>
-           <li class="menu-list-item"><a href="trends.html">Trends</a></li> </ul> 
-    </ul>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Briefly</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item"><a href="index.html">Home</a></li>
+                    <li class="menu-list-item"><a href="movies.html">Movies</a></li>
+                    <li class="menu-list-item"><a href="series.html">Series</a></li>
+                    <li class="menu-list-item"><a href="popular.html">Popular</a></li>
+                    <li class="menu-list-item active"><a href="trends.html">Trends</a></li>
+                </ul>
+            </div>
             <div class="profile-container">
-                <img class="profile-picture" src="../img/ph.jpg" alt="">
+                <img class="profile-picture" src="../img/ph.jpg" alt="Profile">
                 <div class="profile-text-container">
-                    <span class="profile-text">Profile</span> 
+                    <span class="profile-text">Profile</span>
                     <i class="fa-solid fa-angle-down"></i>
-                </div>
-                <div class="toggle"> 
-                    <i class="fa-solid fa-moon toggle-icon"></i>
-                    <i class="fa-solid fa-sun toggle-icon"></i> 
-                    <div class="toggle-ball"></div> 
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="trending-youtube">
-        <h2 class="section-title">Trending Youtube Videos</h2>
-        <div class="video-container">
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/video/1234567890" allowfullscreen></iframe>
-                <p class="video-title">Dance Challenge</p>
+    <div class="container">
+        <section id="trending-youtube">
+            <h2 class="section-title">Trending YouTube Videos</h2>
+            <div class="video-container">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <p class="video-title">Epic Movie Breakdown</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <p class="video-title">Top 10 CGI Moments</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <p class="video-title">Director's Secrets</p>
+                </div>
             </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/video/1234567890" allowfullscreen></iframe>
-                <p class="video-title">Funny Skit</p>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/video/1234567890" allowfullscreen></iframe>
-                <p class="video-title">Viral Prank</p>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.youtube.com/embed/video/1234567890" allowfullscreen></iframe>
-                <p class="video-title">Amazing Stunt</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="trending-instagram">
-        <h2 class="section-title">Trending Instagram Reels</h2>
-        <div class="video-container">
-            <div class="video-item">
-                <iframe src="https://www.instagram.com/reel/1234567890/embed" allowfullscreen></iframe>
-                <p class="video-title">Fashion Tips</p>
+        <section id="trending-instagram">
+            <h2 class="section-title">Trending Reels</h2>
+            <div class="video-container">
+                <div class="video-item">
+                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <p class="video-title">Behind the Scenes</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <p class="video-title">Red Carpet Fashion</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <p class="video-title">Movie Set Magic</p>
+                </div>
             </div>
-            <div class="            <div class="video-item">
-                <iframe src="https://www.instagram.com/reel/1234567891/embed" allowfullscreen></iframe>
-                <p class="video-title">Food Trends</p>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.instagram.com/reel/1234567892/embed" allowfullscreen></iframe>
-                <p class="video-title">Travel Adventures</p>
-            </div>
-            <div class="video-item">
-                <iframe src="https://www.instagram.com/reel/1234567893/embed" allowfullscreen></iframe>
-                <p class="video-title">Workout Routines</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="comment-section">
-        <h2 class="section-title">Leave a Comment</h2>
-        <form id="comment-form">
-            <input type="text" placeholder="Your Name" required>
-            <textarea placeholder="Your Comment" rows="3" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+        <section class="comment-section">
+            <h2 class="section-title" style="text-align: center; border: none;">Join the Discussion</h2>
+            <form class="comment-form">
+                <input type="text" placeholder="Your Name" required>
+                <textarea placeholder="What are your thoughts on today's trends?" rows="4" required></textarea>
+                <button type="submit" class="submit-btn">POST COMMENT</button>
+            </form>
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Trending Videos. All rights reserved.</p>
+        <p>&copy; 2026 Briefly. All cinematic rights reserved.</p>
     </footer>
 
-    <script>
-        function toggleContent() {
-            const content = document.getElementById("parentsContent");
-            const arrow = document.getElementById("arrow");
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                arrow.style.transform = "rotate(0deg)"; // Rotate arrow back
-            } else {
-                content.style.display = "block";
-                arrow.style.transform = "rotate(180deg)"; // Rotate arrow down
-            }
-        }
-    </script>
+    <script src="../Funksionet/main.js"></script>
 </body>
+
 </html>
