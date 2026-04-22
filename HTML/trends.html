@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Unified Trends Styles - Now in Red */
         .video-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -30,11 +29,48 @@
             box-shadow: 0 5px 15px rgba(167, 53, 32, 0.3);
         }
 
-        iframe {
+        .video-anchor {
+            display: block;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-anchor img {
             width: 100%;
             height: 200px;
-            border-radius: 8px;
-            border: none;
+            object-fit: cover;
+            display: block;
+        }
+
+        .play-button-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(167, 53, 32, 0.85);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .play-button-overlay i {
+            color: white;
+            font-size: 20px;
+            margin-left: 4px;
+        }
+
+        .play-button-overlay .fa-instagram {
+            margin-left: 0;
+        }
+
+        .video-anchor:hover .play-button-overlay {
+            background-color: #a73520;
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .video-title {
@@ -80,19 +116,17 @@
             transition: 0.3s;
         }
 
-        .submit-btn:hover {
-            background-color: #ce4228; /* Slightly lighter red for hover */
-        }
+        .submit-btn:hover { background-color: #ce4228; }
 
         .section-title {
             font-size: 28px;
             margin: 30px 0;
-            color: #a73520; /* The Briefly Red */
+            color: #a73520;
             border-bottom: 2px solid #a73520;
             padding-bottom: 10px;
             text-shadow: 0 0 10px rgba(167, 53, 32, 0.3);
         }
-        
+
         footer {
             text-align: center;
             padding: 40px;
@@ -135,15 +169,30 @@
             <h2 class="section-title">Trending YouTube Videos</h2>
             <div class="video-container">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/watch?v=bwELoBJwo8U" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/bwELoBJwo8U/maxresdefault.jpg" alt="Epic Movie Breakdown">
+                        <div class="play-button-overlay">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Epic Movie Breakdown</p>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/watch?v=va1Bhnb3AJw" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/va1Bhnb3AJw/maxresdefault.jpg" alt="Top 10 CGI Moments">
+                        <div class="play-button-overlay">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Top 10 CGI Moments</p>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/watch?v=rQ4q2HhQXbA" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/rQ4q2HhQXbA/maxresdefault.jpg" alt="Director's Secrets">
+                        <div class="play-button-overlay">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Director's Secrets</p>
                 </div>
             </div>
@@ -153,15 +202,30 @@
             <h2 class="section-title">Trending Reels</h2>
             <div class="video-container">
                 <div class="video-item">
-                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <a href="https://www.instagram.com/p/CK_9H_7F_0X/" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/bwELoBJwo8U/maxresdefault.jpg" alt="Behind the Scenes">
+                        <div class="play-button-overlay">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Behind the Scenes</p>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <a href="https://www.instagram.com/p/CK_9H_7F_0X/" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/va1Bhnb3AJw/maxresdefault.jpg" alt="Red Carpet Fashion">
+                        <div class="play-button-overlay">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Red Carpet Fashion</p>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.instagram.com/p/CK_9H_7F_0X/embed" allowfullscreen></iframe>
+                    <a href="https://www.instagram.com/p/CK_9H_7F_0X/" target="_blank" class="video-anchor">
+                        <img src="https://i.ytimg.com/vi/rQ4q2HhQXbA/maxresdefault.jpg" alt="Movie Set Magic">
+                        <div class="play-button-overlay">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </a>
                     <p class="video-title">Movie Set Magic</p>
                 </div>
             </div>

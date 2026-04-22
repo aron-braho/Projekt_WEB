@@ -47,9 +47,60 @@
             align-items: center; justify-content: center;
         }
 
-        .modal-content { position: relative; width: 80%; max-width: 800px; }
-        .close { position: absolute; top: -40px; right: 0; font-size: 30px; color: white; cursor: pointer; }
-        iframe { width: 100%; height: 450px; border-radius: 10px; }
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .video-anchor {
+            display: block;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-anchor img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .play-button-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(167, 53, 32, 0.85);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .play-button-overlay i {
+            color: white;
+            font-size: 30px;
+            margin-left: 6px;
+        }
+
+        .video-anchor:hover .play-button-overlay {
+            background-color: #a73520;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
 
         .chart-container {
             display: flex;
@@ -113,7 +164,7 @@
                 </a>
             </li>
             <li class="movie-list-item">
-                <a class="movie-link" href="knives_out.html">
+                <a class="movie-link" href="knives-out.html">
                     <span class="movie-list-item-title">Mystery Unraveled</span>
                     <span class="movie-list-item-desc">A gripping mystery that keeps you on the edge of your seat.</span>
                     <img src="../img/kinvs.jpeg" alt="Mystery">
@@ -142,19 +193,21 @@
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+            <a href="https://www.youtube.com/watch?v=LEjhY15eCx0" target="_blank" class="video-anchor">
+                    <img src="https://i.ytimg.com/vi/LEjhY15eCx0/maxresdefault.jpg" alt="Watch Inside Out 2 Trailer">                <div class="play-button-overlay">
+                    <i class="fa-solid fa-play"></i>
+                </div>
+            </a>
         </div>
     </div>
 
     <script>
         function openModal() {
             document.getElementById("videoModal").style.display = "flex";
-            document.getElementById("videoFrame").src = "https://www.youtube.com/embed/LEjhY15eCx0";
         }
 
         function closeModal() {
             document.getElementById("videoModal").style.display = "none";
-            document.getElementById("videoFrame").src = "";
         }
 
         const countryCtx = document.getElementById('countryChart').getContext('2d');

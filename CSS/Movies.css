@@ -1,7 +1,8 @@
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: #151515;
     color: white;
+    overflow-x: hidden;
 }
 
 .menu-list-item a:hover {
